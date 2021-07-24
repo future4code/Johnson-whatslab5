@@ -5,7 +5,8 @@ const ContainerMensagens = styled.div `
     height:90%;
     width: 80%;
     background-color: #ece5dd;
-    border: 1px solid rgb(7,94,84,.5);
+    border: 1px solid rgb(156,177,191);
+    border-radius: 0.5em;
 
 `
 

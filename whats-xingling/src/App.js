@@ -4,36 +4,43 @@ import styled from "styled-components";
 import ContainerHistorico from "./components/ContainerHistorico/ContainerHistorico";
 
 const CardContainer = styled.div`
-  background-color: rgb(220, 248, 198);
+  background-color: rgb(255, 169, 73);
   padding: 8px;
   color: white;
   text-align: center;
   height: 80vh;
-  width: 60%;
+  width: 60vw;
   display: flex;
   flex-direction: column;
-  border: 1px solid rgb(7,94,84);
+  border: 1px solid rgb(255,121,26);
   justify-content: space-between;
   align-items: center;
 
 
 `;
 const InputUsuario = styled.input`
-    width: 100px;
-    border: 1px solid rgb(7,94,84);
+    width: 8vw;
+    height: 4vh;
+    border: 1px solid rgb(156,177,191);
+    border-radius: 0.5em;
     padding: 0 10px;
     
     `
 const InputMensagem = styled.input `
-    width: 250px;
-    border: 1px solid rgb(7,94,84);
+    width: 24vw;
+    height: 4vh;
+    border: 1px solid rgb(156,177,191);
+    border-radius: 0.5em;
     padding: 0 10px;
     margin: 0 10px;
 `
 
 const InputBotao = styled.input `
-    width: 70px;
-    border: 1px solid rgb(7,94,84);
+    width: 6vw;
+    height: 4vh;
+    border: 0.5px solid rgb(59,70,80);
+    border-radius: 0.5em;
+    background-color: rgb(156,177,191);
     
 
 `
@@ -41,6 +48,7 @@ const Formulario = styled.form `
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    width: 60vw;
     
 
 `
