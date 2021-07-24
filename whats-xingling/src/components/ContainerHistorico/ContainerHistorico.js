@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-const ContainerMensagens = styled.textarea `
+const ContainerMensagens = styled.div `
     height:90%;
     width: 80%;
-    background-color: whitesmoke;
-    border: 1px solid black;
+    background-color: #ece5dd;
+    border: 1px solid rgb(7,94,84,.5);
 
 `
 
