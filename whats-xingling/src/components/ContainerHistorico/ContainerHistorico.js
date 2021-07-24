@@ -10,11 +10,24 @@ const ContainerMensagens = styled.div `
 
 `
 
-const ContainerHistorico = () => {
+const ContainerHistorico = (props) => {
+    console.log(props.mensagens)
+    const renderizarMensagens=() => {
+        return props.mensagens.map((mensagem, indice) => (
+          <div key={indice}>
+              <p>
+                  {mensagem.nome}
+              </p>
+              <p>
+                  {mensagem.texto}
+              </p>
+          </div>  
+        ))
+            
+    }
     return (
         <ContainerMensagens>
-            
-
+            {renderizarMensagens()}
         </ContainerMensagens>
 
     )
