@@ -55,7 +55,8 @@ const Formulario = styled.form `
 
 export default class App extends React.Component {
   state = {
-    valorMensagem: '',
+    mensagens:[],
+    valorTexto: '',
     valorNome: '',
   };
   
@@ -63,7 +64,7 @@ export default class App extends React.Component {
     this.setState({valorNome: event.target.value})
   }
   onChangeMensagem = (event) => {
-    this.setState({valorMensagem: event.target.value})
+    this.setState({valorTexto: event.target.value})
   }
 
   adicionarUsuario = () => {
@@ -71,9 +72,14 @@ export default class App extends React.Component {
   }
 
   adicionarMensagem = () => {
-    console.log('Adicionando Mensagem', this.state.textoMensagemEnviada)
+    const novaMensagem = {
+      nome:this.state.valorNome,
+      texto:this.state.valorTexto
+    }
+
+    this.setState({mensagens:[...this.state.mensagens, novaMensagem],valorNome:"", valorTexto:""})
   }
-  F
+  
   apagarMensagem = () => {
     console.log('Apagar Mensagem')
   }
@@ -82,7 +88,8 @@ export default class App extends React.Component {
   render() {
     return (
       <CardContainer>
-        <ContainerHistorico />
+        <ContainerHistorico mensagens={this.state.mensagens} />
+      
         <Formulario>
             <label>
                 <InputUsuario  
@@ -94,11 +101,11 @@ export default class App extends React.Component {
                 <InputMensagem
                     name="message"
                     onChange={this.onChangeMensagem}
-                    value={this.state.valorMensagem}
+                    value={this.state.valorTexto}
                     placeholder="Mensagem"
                 />
             </label>
-            <InputBotao type="submit" value="Enviar" />
+            <InputBotao value="Enviar" onClick={this.adicionarMensagem} />
         </Formulario>
       </CardContainer>
     );
