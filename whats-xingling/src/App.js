@@ -38,10 +38,12 @@ const InputMensagem = styled.input `
 const InputBotao = styled.input `
     width: 6vw;
     height: 4vh;
-    border: 0.5px solid rgb(59,70,80);
+    border: 0.5px solid rgb(255,121,26);
     border-radius: 0.5em;
-    background-color: rgb(156,177,191);
-    
+    background-color: rgb(255,121,26);
+    cursor: pointer;
+    text-align: center;
+   
 
 `
 const Formulario = styled.form `
