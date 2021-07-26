@@ -11,6 +11,7 @@ const ContainerMensagens = styled.div `
     flex-direction: column-reverse;
     `
 const ContainerTexto = styled.div `
+    position: relative;
     width: 60%;
     font-size: 1em;
     height: 20%;
@@ -20,32 +21,53 @@ const ContainerTexto = styled.div `
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    align-items: flex-start;
+    align-self: ${(props) => props.position === "left"? "flex-start" : "flex-end"};
+    align-items: ${(props) => props.position === "left"? "flex-start" : "flex-end"};
     border-radius: 30px 0;
+      
         
 `
 const NomeUsuario = styled.h5 `
-    margin: 5px 0px 0px 30px;
+    margin: 5px 30px 0px;
     font-size: .9em;
 `
 const TextoUsuario = styled.p `
-    margin: 0 0 0 50px;
+    margin: 0 50px;
 `
 
+const Deletar = styled.button`
+    font-size: .5em;
+    height: 15px;
+    width: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    padding: 5px;
+    border: 0;
+    background-color: #ef5656;
+    border-radius: 50%;
+    cursor: pointer;
+`
 const ContainerHistorico = (props) => {
     console.log(props.mensagens)
     const renderizarMensagens=() => {
-        return props.mensagens.map((mensagem, indice) => (
-          <ContainerTexto key={indice}>
-              <NomeUsuario>
-                  {mensagem.nome}
-              </NomeUsuario>
-              <TextoUsuario>
-                  {mensagem.texto}
-              </TextoUsuario>
-          </ContainerTexto>  
+        return props.mensagens.map(({nome, texto, messagePosition}, indice) => (
+            <ContainerTexto key={indice} position={messagePosition}>
+                <NomeUsuario>
+                    {nome}
+                </NomeUsuario>
+                <TextoUsuario>
+                    {texto}
+                </TextoUsuario>
+                <Deletar onClick={() => props.deletarMensagem(indice)}>
+                    X
+                </Deletar>
+            </ContainerTexto>  
         ))
-            
     }
     return (
         <ContainerMensagens>
