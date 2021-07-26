@@ -35,7 +35,7 @@ const InputMensagem = styled.input `
     margin: 0 10px;
 `
 
-const InputBotao = styled.input `
+const  InputBotao = styled.input `
     width: 6vw;
     height: 4vh;
     border: 0.5px solid rgb(255,121,26);
@@ -69,30 +69,51 @@ export default class App extends React.Component {
     this.setState({valorTexto: event.target.value})
   }
 
-  adicionarUsuario = () => {
+  getMessagePosition = () => {
+    if(this.state.valorNome === "eu" || this.state.valorNome === "EU") {
+       return "right"
+     } 
+    return "left"
+   
+
 
   }
 
   adicionarMensagem = () => {
-    const novaMensagem = {
-      nome:this.state.valorNome,
-      texto:this.state.valorTexto
-    }
+    if (this.state.valorNome.length && this.state.valorTexto.length) {
+       const novaMensagem = {
+        nome:this.state.valorNome,
+        texto:this.state.valorTexto,
+        messagePosition: this.getMessagePosition()
+      }
 
-    this.setState({mensagens:[...this.state.mensagens, novaMensagem],valorNome:"", valorTexto:""})
+      this.setState({mensagens:[...this.state.mensagens, novaMensagem],valorNome:"", valorTexto:""})
+    } else {
+      alert('Digite alguma coisa!')
+    }
   }
   
-  apagarMensagem = () => {
-    console.log('Apagar Mensagem')
+  deletarMensagem = (indice) => {
+    const mensagens = this.state.mensagens
+    mensagens.splice(indice, 1)
+
+    this.setState({
+      mensagens
+    })
   }
+  captureSubmit = (event) => {
+    event.preventDefault();
+    this.adicionarMensagem();
+
+  };
   
 
   render() {
     return (
       <CardContainer>
-        <ContainerHistorico mensagens={this.state.mensagens} />
+        <ContainerHistorico mensagens={this.state.mensagens} deletarMensagem={this.deletarMensagem} />
       
-        <Formulario>
+        <Formulario onSubmit={this.captureSubmit}>
             <label>
                 <InputUsuario  
                     name={"nome"} 
@@ -107,7 +128,7 @@ export default class App extends React.Component {
                     placeholder="Mensagem"
                 />
             </label>
-            <InputBotao value="Enviar" onClick={this.adicionarMensagem} />
+            <InputBotao type="submit" value="Enviar" onClick={this.captureSubmit} />
         </Formulario>
       </CardContainer>
     );
