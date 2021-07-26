@@ -4,7 +4,7 @@ import styled from "styled-components";
 const ContainerMensagens = styled.div `
     height:90%;
     width: 80%;
-    background-color: #ece5dd;
+    background-color: rgb(255,255,255);
     border: 1px solid rgb(156,177,191);
     border-radius: 0.5em;
     display: flex;
@@ -14,7 +14,7 @@ const ContainerTexto = styled.div `
     width: 60%;
     font-size: 1em;
     height: 20%;
-    background-color: rgb(255, 169, 73,.6);
+    background-color: rgb(156,177,191,.6);
     color: rgb(50,50,50);
     margin:10px;
     display: flex;

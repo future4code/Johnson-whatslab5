@@ -2,6 +2,8 @@ import React from "react";
 import "./App.css";
 import styled from "styled-components";
 import ContainerHistorico from "./components/ContainerHistorico/ContainerHistorico";
+import background  from './components/imagens/background.png'
+
 
 const CardContainer = styled.div`
   background-color: rgb(255, 169, 73);
@@ -15,6 +17,7 @@ const CardContainer = styled.div`
   border: 1px solid rgb(255,121,26);
   justify-content: space-between;
   align-items: center;
+
 
 
 `;
